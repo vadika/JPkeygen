@@ -1,0 +1,5 @@
+# Python dependencies for Tegra key generation tools
+cryptography>=3.4.0
+pycryptodomex>=3.9.0
+pyopenssl>=20.0.0
+uuid>=1.30

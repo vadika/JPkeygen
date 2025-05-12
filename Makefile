@@ -1,5 +1,16 @@
 # Makefile for Tegra security key generation
 
+.PHONY: all clean prep
+
+# Prepare virtual environment and install dependencies
+prep:
+	@echo "Creating Python virtual environment..."
+	python3 -m venv .venv
+	@echo "Installing required Python packages..."
+	.venv/bin/pip install --upgrade pip
+	.venv/bin/pip install -r requirements.txt
+	@echo "Virtual environment setup complete. Activate with 'source .venv/bin/activate'"
+
 # Default target: generate all security keys
 all: 
 	bash ./keygen.sh
