@@ -5,6 +5,12 @@
 # Exit immediately if a command exits with a non-zero status
 set -e
 
+# Activate Python virtual environment if it exists
+if [ -d ".venv" ]; then
+    echo "Activating Python virtual environment..."
+    source .venv/bin/activate
+fi
+
 # Define paths to NVIDIA Tegra tools
 TEGRASIGN="../JP/Linux_for_Tegra/bootloader/tegrasign_v3.py"  # Tool for signing and key operations
 UEFIDTSGEN="../JP/Linux_for_Tegra/tools/gen_uefi_keys_dts.sh"  # Tool for generating UEFI keys device tree
