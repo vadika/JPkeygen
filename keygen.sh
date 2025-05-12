@@ -14,7 +14,7 @@ fi
 # Check if keys already exist and warn user before proceeding
 if [ -f "rsa.pem" ] || [ -f "sbk.key" ] || [ -f "kek.key" ] || [ -d "uefi_keys" ]; then
     echo "WARNING: Some key files already exist in the current directory."
-    echo "Generating new keys will overwrite existing ones."
+    echo "Generating new keys will overwrite existing ones, otherwise run make clean."
     read -p "Do you want to continue? (y/n): " -n 1 -r
     echo
     if [[ ! $REPLY =~ ^[Yy]$ ]]; then
