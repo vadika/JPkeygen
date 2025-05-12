@@ -11,6 +11,18 @@ if [ -d ".venv" ]; then
     source .venv/bin/activate
 fi
 
+# Check if keys already exist and warn user before proceeding
+if [ -f "rsa.pem" ] || [ -f "sbk.key" ] || [ -f "kek.key" ] || [ -d "uefi_keys" ]; then
+    echo "WARNING: Some key files already exist in the current directory."
+    echo "Generating new keys will overwrite existing ones."
+    read -p "Do you want to continue? (y/n): " -n 1 -r
+    echo
+    if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+        echo "Key generation aborted."
+        exit 1
+    fi
+fi
+
 # Define paths to NVIDIA Tegra tools
 TEGRASIGN="../JP/Linux_for_Tegra/bootloader/tegrasign_v3.py"  # Tool for signing and key operations
 UEFIDTSGEN="../JP/Linux_for_Tegra/tools/gen_uefi_keys_dts.sh"  # Tool for generating UEFI keys device tree
