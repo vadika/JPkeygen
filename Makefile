@@ -2,6 +2,10 @@
 
 .PHONY: all clean prep
 
+# Default target: generate all security keys
+all: 
+	bash ./keygen.sh
+
 # Prepare virtual environment and install dependencies
 prep:
 	@echo "Creating Python virtual environment..."
@@ -10,10 +14,6 @@ prep:
 	.venv/bin/pip install --upgrade pip
 	.venv/bin/pip install -r requirements.txt
 	@echo "Virtual environment setup complete. Activate with 'source .venv/bin/activate'"
-
-# Default target: generate all security keys
-all: 
-	bash ./keygen.sh
 
 # Clean target: remove all generated files and directories
 clean:
